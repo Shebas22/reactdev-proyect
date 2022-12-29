@@ -1,0 +1,482 @@
+[
+    {
+        "codigo": 1,
+        "nombre": "acelga",
+        "imagen": "./src/assets/img/resource/acelga.png",
+        "categoria": "verdura",
+        "precio": 150,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "atado"
+    },
+    {
+        "codigo": 2,
+        "nombre": "aji",
+        "imagen": "./src/assets/img/resource/aji.png",
+        "categoria": "fruta",
+        "precio": 430,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 3,
+        "nombre": "ajo",
+        "imagen": "./src/assets/img/resource/ajo.png",
+        "categoria": "verdura",
+        "precio": 150,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "unidad"
+    },
+    {
+        "codigo": 4,
+        "nombre": "alcaucil",
+        "imagen": "./src/assets/img/resource/alcaucil.png",
+        "categoria": "verdura",
+        "precio": 150,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "unidad"
+    },
+    {
+        "codigo": 5,
+        "nombre": "anana",
+        "imagen": "./src/assets/img/resource/anana.png",
+        "categoria": "fruta",
+        "precio": 550,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "unidad"
+    },
+    {
+        "codigo": 6,
+        "nombre": "apio",
+        "imagen": "./src/assets/img/resource/apio.png",
+        "categoria": "verdura",
+        "precio": 180,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "atado"
+    },
+    {
+        "codigo": 7,
+        "nombre": "banana",
+        "imagen": "./src/assets/img/resource/banana.png",
+        "categoria": "fruta",
+        "precio": 429,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 8,
+        "nombre": "batata",
+        "imagen": "./src/assets/img/resource/batata.png",
+        "categoria": "verdura",
+        "precio": 220,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 9,
+        "nombre": "berenjena",
+        "imagen": "./src/assets/img/resource/berenjena.png",
+        "categoria": "fruta",
+        "precio": 180,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 10,
+        "nombre": "brocoli",
+        "imagen": "./src/assets/img/resource/brocoli.png",
+        "categoria": "verdura",
+        "precio": 250,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "atado"
+    },
+    {
+        "codigo": 11,
+        "nombre": "cebolla",
+        "imagen": "./src/assets/img/resource/cebolla.png",
+        "categoria": "verdura",
+        "precio": 249,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 12,
+        "nombre": "cebollin",
+        "imagen": "./src/assets/img/resource/cebollin.png",
+        "categoria": "verdura",
+        "precio": 390,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "atado"
+    },
+    {
+        "codigo": 13,
+        "nombre": "cereza",
+        "imagen": "./src/assets/img/resource/cereza.png",
+        "categoria": "fruta",
+        "precio": 690,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 14,
+        "nombre": "choclo",
+        "imagen": "./src/assets/img/resource/choclo.png",
+        "categoria": "fruta",
+        "precio": 70,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "unidad"
+    },
+    {
+        "codigo": 15,
+        "nombre": "coco",
+        "imagen": "./src/assets/img/resource/coco.png",
+        "categoria": "fruta",
+        "precio": 545,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "unidad"
+    },
+    {
+        "codigo": 16,
+        "nombre": "coliflor",
+        "imagen": "./src/assets/img/resource/coliflor.png",
+        "categoria": "verdura",
+        "precio": 250,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "atado"
+    },
+    {
+        "codigo": 17,
+        "nombre": "durazno",
+        "imagen": "./src/assets/img/resource/durazno.png",
+        "categoria": "fruta",
+        "precio": 590,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 18,
+        "nombre": "esparrago",
+        "imagen": "./src/assets/img/resource/esparrago.png",
+        "categoria": "verdura",
+        "precio": 490,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "atado"
+    },
+    {
+        "codigo": 19,
+        "nombre": "espinaca",
+        "imagen": "./src/assets/img/resource/espinaca.png",
+        "categoria": "verdura",
+        "precio": 180,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "atado"
+    },
+    {
+        "codigo": 20,
+        "nombre": "frambuesa",
+        "imagen": "./src/assets/img/resource/frambuesa.png",
+        "categoria": "fruta",
+        "precio": 890,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 21,
+        "nombre": "frutilla",
+        "imagen": "./src/assets/img/resource/frutilla.png",
+        "categoria": "fruta",
+        "precio": 890,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 22,
+        "nombre": "higo",
+        "imagen": "./src/assets/img/resource/higo.png",
+        "categoria": "fruta",
+        "precio": 1500,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 23,
+        "nombre": "hinojo",
+        "imagen": "./src/assets/img/resource/hinojo.png",
+        "categoria": "verdura",
+        "precio": 100,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "unidad"
+    },
+    {
+        "codigo": 24,
+        "nombre": "hongo",
+        "imagen": "./src/assets/img/resource/hongo.png",
+        "categoria": "verdura",
+        "precio": 2900,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 25,
+        "nombre": "kiwi",
+        "imagen": "./src/assets/img/resource/kiwi.png",
+        "categoria": "fruta",
+        "precio": 890,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 26,
+        "nombre": "lechuga",
+        "imagen": "./src/assets/img/resource/lechuga.png",
+        "categoria": "verdura",
+        "precio": 390,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 27,
+        "nombre": "limon",
+        "imagen": "./src/assets/img/resource/limon.png",
+        "categoria": "fruta",
+        "precio": 120,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 28,
+        "nombre": "mango",
+        "imagen": "./src/assets/img/resource/mango.png",
+        "categoria": "fruta",
+        "precio": 400,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "unidad"
+    },
+    {
+        "codigo": 29,
+        "nombre": "manzana",
+        "imagen": "./src/assets/img/resource/manzana.png",
+        "categoria": "fruta",
+        "precio": 490,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 30,
+        "nombre": "melon",
+        "imagen": "./src/assets/img/resource/melon.png",
+        "categoria": "fruta",
+        "precio": 430,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "unidad"
+    },
+    {
+        "codigo": 31,
+        "nombre": "membrillo",
+        "imagen": "./src/assets/img/resource/membrillo.png",
+        "categoria": "fruta",
+        "precio": 670,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 32,
+        "nombre": "naranja",
+        "imagen": "./src/assets/img/resource/naranja.png",
+        "categoria": "fruta",
+        "precio": 180,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 33,
+        "nombre": "palta",
+        "imagen": "./src/assets/img/resource/palta.png",
+        "categoria": "fruta",
+        "precio": 2300,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 34,
+        "nombre": "papa",
+        "imagen": "./src/assets/img/resource/papa.png",
+        "categoria": "verdura",
+        "precio": 90,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 35,
+        "nombre": "papaya",
+        "imagen": "./src/assets/img/resource/papaya.png",
+        "categoria": "fruta",
+        "precio": 250,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "unidad"
+    },
+    {
+        "codigo": 36,
+        "nombre": "pepino",
+        "imagen": "./src/assets/img/resource/pepino.png",
+        "categoria": "fruta",
+        "precio": 190,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 37,
+        "nombre": "pera",
+        "imagen": "./src/assets/img/resource/pera.png",
+        "categoria": "fruta",
+        "precio": 350,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 38,
+        "nombre": "pimiento",
+        "imagen": "./src/assets/img/resource/pimiento.png",
+        "categoria": "fruta",
+        "precio": 420,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 39,
+        "nombre": "puerro",
+        "imagen": "./src/assets/img/resource/puerro.png",
+        "categoria": "verdura",
+        "precio": 360,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 40,
+        "nombre": "rabanito",
+        "imagen": "./src/assets/img/resource/rabanito.png",
+        "categoria": "verdura",
+        "precio": 150,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "atado"
+    },
+    {
+        "codigo": 41,
+        "nombre": "remolacha",
+        "imagen": "./src/assets/img/resource/remolacha.png",
+        "categoria": "verdura",
+        "precio": 250,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "atado"
+    },
+    {
+        "codigo": 42,
+        "nombre": "repollo",
+        "imagen": "./src/assets/img/resource/repollo.png",
+        "categoria": "verdura",
+        "precio": 140,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "unidad"
+    },
+    {
+        "codigo": 43,
+        "nombre": "repollo colorado",
+        "imagen": "./src/assets/img/resource/repollo-colorado.png",
+        "categoria": "verdura",
+        "precio": 140,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "unidad"
+    },
+    {
+        "codigo": 44,
+        "nombre": "sandia",
+        "imagen": "./src/assets/img/resource/sandia.png",
+        "categoria": "fruta",
+        "precio": 120,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 45,
+        "nombre": "tomate",
+        "imagen": "./src/assets/img/resource/tomate.png",
+        "categoria": "fruta",
+        "precio": 190,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 46,
+        "nombre": "uva",
+        "imagen": "./src/assets/img/resource/uva.png",
+        "categoria": "fruta",
+        "precio": 489,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 47,
+        "nombre": "zanahoria",
+        "imagen": "./src/assets/img/resource/zanahoria.png",
+        "categoria": "verdura",
+        "precio": 170,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    },
+    {
+        "codigo": 48,
+        "nombre": "zapallo",
+        "imagen": "./src/assets/img/resource/zapallo.png",
+        "categoria": "fruta",
+        "precio": 230,
+        "stock": 100,
+        "cantidad": 0,
+        "frac": "Kg"
+    }
+]
