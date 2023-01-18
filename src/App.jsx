@@ -3,6 +3,7 @@ import { Button, Container, Flex, Input, Tag, Stack, ButtonGroup, IconButton  } 
 import './components/styles/App.css';
 import ItemListContainer from './components/ItemListContainer';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
     <Container className='body'  centerContent padding={10} >
       <ItemListContainer greeting="Bienvenido a nuestra tienda!" />
     </Container>
+    <Footer></Footer>
   </>
   );
 }

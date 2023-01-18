@@ -25,15 +25,15 @@ const NavBar = ({ background }) => {
         <nav>
           <ul className="nav-container">
             <li>
-              <a href="/">Inicio</a>
+              <a>Inicio</a>
             </li>
             <li className="products-item">
-              <a href="/">
-                Productos <span className="arrow"></span>
+              <a>
+                Productos
               </a>
             </li>
             <li>
-              <a href="/">Contacto</a>
+              <a>Contacto</a>
             </li>
           </ul>
         </nav>
