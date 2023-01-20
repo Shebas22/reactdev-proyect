@@ -1,34 +1,34 @@
 // Lista de productos
-import { useState } from 'react'
-import products from "../../bbdd.json"
-import { SimpleGrid, Box, Heading, Input,  } from "@chakra-ui/react";
+import { useState, useEffect } from 'react'
+import { SimpleGrid, Box, Heading, Input, ButtonGroup, Button, Grid, } from "@chakra-ui/react";
 import CardsProducts from "./CardsProducts";
+import { Link, useParams } from 'react-router-dom';
 
-function ItemListContainer({ greeting}) {
-    const [productos, setProductos] = useState(products);
-    const [value, setValue] = useState('')
-//  Actualizar lista de productos evento onChange
-    const handleChange = (event) => {
-        debugger
-        setProductos([]) 
-            setValue(event.target.value.toLowerCase())
-          setProductos(filtrar(products,value))
-      }
-// Filtrar productos
-      const filtrar = (array,valor) => {
-        let resultado = [];
-        array.filter (producto => {
-            if(JSON.stringify(producto.nombre+producto.categoria).includes(valor)){
-                resultado.push(producto);
-            }
-        });
-        return (valor)?resultado:products;
-      };
+function ItemListContainer({ productos, greeting, setCarrito, carrito, setInputText, setProductos }) {
+  const { categoryid } = useParams();
+  const category = categoryid || '';
+  const categorias = ['frutas', 'verduras'];
 
+  useEffect(() => {
+    setInputText("")
+  }, [])
 
-    return (
+  return (
     <>
-      <Box textAlign="center">
+
+      <ButtonGroup spacing='2'>
+        {categorias.map((category) => {
+          return <Link to={`../category/${category}`} key={category}>
+            <Button variant='solid' colorScheme='red' key={category}>
+              {category}
+            </Button>
+          </Link>
+        })
+        }
+      </ButtonGroup>
+
+      <SimpleGrid minChildWidth="250px" spacing="20px" m="6">
+
         <Heading as="h1"
           color="blue.400"
           fontSize="2xl"
@@ -38,23 +38,18 @@ function ItemListContainer({ greeting}) {
           textAlign="center"
         >
           {greeting}
-
-          <Input placeholder="Filtrar productos..." 
-            color={'black'}
-            _placeholder={{ opacity: 0.5, color: 'inherit' }}
-            onChange={handleChange}/>
         </Heading>
-      </Box>
-      <SimpleGrid minChildWidth="250px" spacing="20px" m="6">
-      {productos.map((producto) => {
-        return <CardsProducts
-        key={producto.codigo}
-        title={producto.nombre}
-        price={producto.precio}
-        image={producto.imagen}
-        fraction={producto.frac} />;
-        })}
+
+        {productos.map((producto) => {
+          return <CardsProducts
+            producto={producto}
+            key={producto.codigo}
+          />;
+        })
+        }
+
       </SimpleGrid>
+
     </>
   );
 }

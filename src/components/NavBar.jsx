@@ -5,19 +5,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import './styles/NavBar.css';
+import { Link } from 'react-router-dom';
 
 const NavBar = ({ background }) => {
   //Ruta de la imagen
-  const logo ='./src/assets/img/logo.png';
- 
+  const logo = './src/assets/img/logo.png';
+
   return (
     <header className={`header background--${background}`}>
-      
+
       <div className="header-container">
-        
+
         {/* Botón de menú  */}
         <div className="menu-button">
-          <FontAwesomeIcon icon={faBars} size="lg" color="white"/>
+          <FontAwesomeIcon icon={faBars} size="lg" color="white" />
           <span>Menu</span>
         </div>
 
@@ -25,22 +26,28 @@ const NavBar = ({ background }) => {
         <nav>
           <ul className="nav-container">
             <li>
-              <a>Inicio</a>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                Inicio
+              </Link>
             </li>
             <li className="products-item">
-              <a>
+              <Link to="/productos" style={{ textDecoration: "none" }}>
                 Productos
-              </a>
+              </Link>
             </li>
             <li>
-              <a>Contacto</a>
+              <Link to="/contacto" style={{ textDecoration: "none" }}>
+                Contacto
+              </Link>
             </li>
           </ul>
         </nav>
 
         {/* logo de la marca */}
         <div className="logo-container">
-          <img src={logo} alt="logo" />
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <img src={logo} alt="logo" />
+          </Link>
         </div>
 
         {/* cart widget */}
