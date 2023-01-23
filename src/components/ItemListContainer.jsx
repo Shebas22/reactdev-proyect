@@ -11,6 +11,9 @@ function ItemListContainer({ productos, greeting, setCarrito, carrito, setInputT
 
   useEffect(() => {
     setInputText("")
+    // category?
+    // setProductos(productos.filter((producto)=>producto.categoria == categoryid)):
+    // setProductos(productos);
   }, [])
 
   return (

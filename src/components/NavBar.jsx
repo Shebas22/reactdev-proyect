@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const NavBar = ({ background }) => {
   //Ruta de la imagen
-  const logo = './src/assets/img/logo.png';
+  const logo = '../src/assets/img/logo.png';
 
   return (
     <header className={`header background--${background}`}>
