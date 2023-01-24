@@ -6,15 +6,29 @@ import { Link, useParams } from 'react-router-dom';
 
 function ItemListContainer({ productos, greeting, setCarrito, carrito, setInputText, setProductos }) {
   const { categoryid } = useParams();
-  const category = categoryid || '';
-  const categorias = ['frutas', 'verduras'];
+  const categorias = ['fruta', 'verdura'];
+  const [selectedCategory, setselectedCategory] = useState([]);
+  const [categoryProducts, setcategoryProducts] = useState([]);
 
   useEffect(() => {
     setInputText("")
+    setcategoryProducts(
+      productos.filter((producto)=> producto.categoria == categoryid)
+    )
     // category?
-    // setProductos(productos.filter((producto)=>producto.categoria == categoryid)):
+    // setProdFilter(productos.filter((producto)=>producto.categoria = category))
+    // console.log(prodFilter);
+    //   producto.categoria = category
+      // if(producto.categoria == category){
+      //   console.log("match");
+      //   return producto
+      // }
+      // console.log(producto.categoria)
+    // }
+    //   )
+    // )
     // setProductos(productos);
-  }, [])
+  }, [selectedCategory])
 
   return (
     <>
@@ -22,7 +36,8 @@ function ItemListContainer({ productos, greeting, setCarrito, carrito, setInputT
       <ButtonGroup spacing='2'>
         {categorias.map((category) => {
           return <Link to={`../category/${category}`} key={category}>
-            <Button variant='solid' colorScheme='red' key={category}>
+            <Button variant='solid' colorScheme='red' key={category} onClick={()=>setselectedCategory(category)}
+            >
               {category}
             </Button>
           </Link>
@@ -43,11 +58,21 @@ function ItemListContainer({ productos, greeting, setCarrito, carrito, setInputT
           {greeting}
         </Heading>
 
-        {productos.map((producto) => {
-          return <CardsProducts
+        {categoryProducts.length>0 
+        ?
+        // productos.filter((producto) => { producto.categoria = category}).
+        categoryProducts.map((producto) => {
+          return (<CardsProducts
             producto={producto}
             key={producto.codigo}
-          />;
+          />)
+        })
+        :
+        productos.map((producto)=>{
+          return (<CardsProducts
+            producto={producto}
+            key={producto.codigo}
+          />)
         })
         }
 

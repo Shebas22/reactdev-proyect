@@ -24,7 +24,9 @@ function App() {
   }, [inputText])
 
   const getProductos = () => {
-    setProductos(filtrar(products, inputText.toLowerCase()))
+    fetch("../bbdd.json")
+    .then(resp =>resp.json())
+    .then(productos =>setProductos(filtrar(productos, inputText.toLowerCase())))
   };
 
   //  Actualizar lista de productos evento onChange
