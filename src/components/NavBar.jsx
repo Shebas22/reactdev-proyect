@@ -1,13 +1,15 @@
 // Barra de navegación
-import React from 'react';
+import React, { useContext } from 'react';
 import CartWidget from './CartWidget';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-
 import './styles/NavBar.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import CartContext from '../App'
 
-const NavBar = ({ background }) => {
+const NavBar = ({background }) => {
+const carrito = useContext(CartContext);
+
   //Ruta de la imagen
   const logo = '../src/assets/img/logo.png';
 
@@ -26,32 +28,32 @@ const NavBar = ({ background }) => {
         <nav>
           <ul className="nav-container">
             <li>
-              <Link to="/" style={{ textDecoration: "none" }}>
+              <NavLink to="/" className={({ isActive }) => isActive ? "activeLink" : undefined}>
                 Inicio
-              </Link>
+              </NavLink>
             </li>
             <li className="products-item">
-              <Link to="/productos" style={{ textDecoration: "none" }}>
+              <NavLink to="/productos" className={({ isActive }) => isActive ? "activeLink" : undefined}>
                 Productos
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/contacto" style={{ textDecoration: "none" }}>
+              <NavLink to="/contacto" className={({ isActive }) => isActive ? "activeLink" : undefined}>
                 Contacto
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>
 
         {/* logo de la marca */}
         <div className="logo-container">
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <NavLink to="/" >
             <img src={logo} alt="logo" />
-          </Link>
+          </NavLink>
         </div>
 
         {/* cart widget */}
-        <CartWidget />
+        <CartWidget carrito={carrito}/>
       </div>
     </header>
   );

@@ -2,11 +2,11 @@
     {
         "codigo": 1,
         "nombre": "acelga",
-        "imagen": "../src/assets/img/resource/acelga.png",
+        "imagen": "https://i.imgur.com/tUVxVbG.png",
         "categoria": "verdura",
         "precio": 150,
         "stock": 100,
-        "cantidad": 0,
+        "cantidad": 3,
         "frac": "atado"
     },
     {

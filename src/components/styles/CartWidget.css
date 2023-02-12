@@ -2,12 +2,14 @@
     position: relative;
     cursor: pointer;
     text-align: center;
+    color: white;
   }
   
   .qty-display {
     display: inline-block;
     width: 18px;
     height: 18px;
+    color: black;
     background-color: white;
     border-radius: 50%;
     font-size: 12px;
@@ -16,3 +18,11 @@
     line-height: 17px;
   }
   
+  .activeLink {
+    color: rgb(178, 210, 123) !important;
+    text-decoration: overline !important;
+  }
+
+  .activeLink .qty-display{
+    background-color: rgb(178, 210, 123) !important;
+  }

@@ -1,9 +1,10 @@
 // Cards de productos
 import React from 'react'
-import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Stack, Text } from '@chakra-ui/react'
+import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Stack, Text } from '@chakra-ui/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { MdOutlineAddShoppingCart, MdOutlineRemoveShoppingCart } from 'react-icons/md';
 
 
 const CardsProducts = ({ producto }) => {
@@ -32,11 +33,18 @@ const CardsProducts = ({ producto }) => {
       <Divider />
       <CardFooter>
         <ButtonGroup spacing='2'>
-          <Button variant='solid' colorScheme='red' >
-            Buy now
+          <NumberInput defaultValue={1} min={0} max={producto.stock}>
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+          <Button variant='ghost' colorScheme='blue' >
+            <MdOutlineAddShoppingCart size={30} />
           </Button>
           <Button variant='ghost' colorScheme='blue' >
-            <FontAwesomeIcon icon={faCartShopping} size="2x" color="blue" />
+            <MdOutlineRemoveShoppingCart size={30} />
           </Button>
         </ButtonGroup>
       </CardFooter>
