@@ -4,7 +4,7 @@ import React from 'react'
 const Home = () => {
     return (
         <Container centerContent>
-            <Image src={`https://imgur.com/j4yM0ER`}
+            <Image src={`https://i.imgur.com/j4yM0ER.png`}
                 alt={"imagen de inicio"}
                 borderRadius='lg' ></Image>
         </Container>
