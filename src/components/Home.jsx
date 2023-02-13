@@ -4,7 +4,7 @@ import React from 'react'
 const Home = () => {
     return (
         <Container centerContent>
-            <Image src={`../src/assets/img/shop.svg`}
+            <Image src={`https://imgur.com/j4yM0ER`}
                 alt={"imagen de inicio"}
                 borderRadius='lg' ></Image>
         </Container>

@@ -11,7 +11,7 @@ const NavBar = ({background, carrito }) => {
 // const carrito = useContext(CartContext);
 
   //Ruta de la imagen
-  const logo = '../src/assets/img/logo.png';
+  const logo = 'https://imgur.com/obuyVRX';
 
   return (
     <header className={`header background--${background}`}>
