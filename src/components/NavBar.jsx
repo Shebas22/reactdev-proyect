@@ -7,8 +7,8 @@ import './styles/NavBar.css';
 import { Link, NavLink } from 'react-router-dom';
 import CartContext from '../App'
 
-const NavBar = ({background }) => {
-const carrito = useContext(CartContext);
+const NavBar = ({background, carrito }) => {
+// const carrito = useContext(CartContext);
 
   //Ruta de la imagen
   const logo = '../src/assets/img/logo.png';

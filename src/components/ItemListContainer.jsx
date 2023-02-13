@@ -66,14 +66,18 @@ function ItemListContainer({ productos, greeting, setCarrito, carrito, setInputT
             categoryProducts.map((producto) => {
               return (<CardsProducts
                 producto={producto}
-                key={producto.codigo}
+                key={producto.id}
+                carrito={carrito}
+                setCarrito={setCarrito}
               />)
             })
             :
             productos.length > 0 ? productos.map((producto) => {
               return (<CardsProducts
                 producto={producto}
-                key={producto.codigo}
+                key={producto.id}
+                carrito={carrito}
+                setCarrito={setCarrito}
               />)
             }) :
               <p>No se encontraron productos</p>

@@ -6,13 +6,14 @@ import './styles/CartWidget.css';
 import { Link, NavLink } from 'react-router-dom';
 import CartContext from '../App'
 
-const CartWidget = ({}) => {
-const carrito = useContext(CartContext);
+const CartWidget = ({carrito}) => {
+// const carrito = useContext(CartContext);
 const [itemsTotal, setItemsTotal] = useState(0)
 
 useEffect(() => {
-  setItemsTotal(0)
-  carrito?carrito.map((item) =>{setItemsTotal(itemsTotal+item.cantidad)}):null
+  let acc=0;
+  carrito?carrito.map((item) =>{
+    setItemsTotal(acc += parseInt(item.cantidad))}):null
 }, [carrito])
 
 

@@ -4,10 +4,10 @@ import { MdOutlineRemoveShoppingCart } from 'react-icons/md'
 import ShopDetail from './ShopDetail'
 
 
-const ItemCartContainer = ({ productos, greeting }) => {
+const ItemCartContainer = ({ carrito, greeting }) => {
     return (
         <>
-            {productos.length > 0 ? <><TableContainer>
+            {carrito.length > 0 ? <><TableContainer>
                 <Table variant='striped' colorScheme='gray'>
                     <TableCaption></TableCaption>
                     <Thead>
@@ -20,8 +20,8 @@ const ItemCartContainer = ({ productos, greeting }) => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {productos.map((producto) => {
-                            return <Tr key={`table${producto.codigo}`}>
+                        {carrito.map((producto) => {
+                            return <Tr key={`table${producto.id}`}>
                                 <Td><Image
                                     boxSize='35px'
                                     src={producto.imagen}
@@ -47,10 +47,13 @@ const ItemCartContainer = ({ productos, greeting }) => {
                         </Tr>
                     </Tfoot> */}
                 </Table>
-            </TableContainer> 
-            <ShopDetail carrito={productos}/>
-                
-            </>:
+            </TableContainer>
+                <ShopDetail carrito={carrito} />
+                <Button variant='solid' colorScheme='teal' >
+                    Finalizar compra
+                </Button>
+
+            </> :
                 <p>Carrito se encuentra vacio</p>
 
             }

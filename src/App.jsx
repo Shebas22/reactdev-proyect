@@ -15,11 +15,16 @@ import ItemCartContainer from './components/ItemCartContainer';
 import { createContext } from 'react';
 import Spinner from './components/Spinner';
 import Home from './components/Home';
+import { db } from "../db/firebase-config";
+import { collection, getDocs, } from "firebase/firestore";
 
 const urlBbDd = "./src/bbdd.json";
 
+export const ProductContext = createContext();
+export const CartContext = createContext();
 
 function App() {
+  const productsCollectionRef = collection(db, "products")
   const [inputText, setInputText] = useState("");
   const [productos, setProductos] = useState([]);
   const [carrito, setCarrito] = useState([]);
@@ -31,24 +36,10 @@ function App() {
   }, [inputText])
 
   const getProductos = async () => {
-    toast({
-      title: 'Loading',
-      description: "Cargando productos desde la BBDD",
-      status: 'info',
-      duration: 2000,
-      isClosable: true,
-    })
-    await fetch("../bbdd.json")
-      .then(resp => resp.json())
-      .then(productos => {
-        setTimeout(() => {
-          setLoading(false)
-          setProductos(filtrar(productos, inputText.toLowerCase()));
-          // setCarrito(productos)
-        }, 500);
-      })
-      .catch(err => console.log("Error al cargar la BBDD"))
-    // .then(productos => setProductos(filtrar(productos, inputText.toLowerCase())))
+    const querySnapshot = await getDocs(productsCollectionRef);
+    setLoading(false)
+    const docs = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    setProductos(filtrar(docs, inputText.toLowerCase()))
   };
 
   // Filtrar productos
@@ -62,32 +53,91 @@ function App() {
     return (valor) ? resultado : array;
   };
 
+  // // Vacia carrito
+  // vaciarCarrito() {
+  //   carrito.length = 0;
+  //   guardarCarrito();
+  //   toast({
+  //     title: 'Loading',
+  //     description: "Vaciando carrito",
+  //     status: 'info',
+  //     duration: 2000,
+  //     isClosable: true,
+  //   })
+  // }
+
+  // // Agrega productos al carrito, si ya se encuentra modifica la cantidad del mismo
+  // agregarProducto(producto) {
+  //   let index = carrito.findIndex(valor => valor.id === producto.id);
+  //   if (index < 0) {
+  //     carrito.push(producto);
+  //     toast({
+  //       title: 'Loading',
+  //       description: `🟢 Se agregó ${producto.nombre} al carrito`,
+  //       status: 'success',
+  //       duration: 2000,
+  //       isClosable: true,
+  //     })
+  //   } else {
+  //     carrito[index].cantidad = producto.cantidad;
+  //     toast({
+  //       title: 'Loading',
+  //       description: `🟡 Se actualizó ${producto.nombre} del carrito`,
+  //       status: 'warning',
+  //       duration: 2000,
+  //       isClosable: true,
+  //     })
+  //   }
+  //   guardarCarrito();
+  // }
+
+  // // Quita productos del carrito
+  // quitarProducto(producto) {
+  //   let index = carrito.findIndex(valor => valor.id === producto.id);
+  //   if (index >= 0) {
+  //     carrito.splice(index, 1);
+  //     toast({
+  //       title: 'Loading',
+  //       description: `🟠 Se quitó ${producto.nombre} del carrito`,
+  //       status: 'error',
+  //       duration: 2000,
+  //       isClosable: true,
+  //     })
+  //   }
+  //   guardarCarrito();
+  // }
+
+
+
 
   return (
     <><div className='body'>
-      <CartContext.Provider value={carrito}>
-        <NavBar background={'transparent'} carrito={productos} />
+      <CartContext.Provider value={[carrito, setCarrito]}>
+        <NavBar background={'transparent'} carrito={carrito}/>
         <Container maxW='1024px' padding={10} >
           {loading ? (<Spinner />) :
             <ul>
               <Routes>
-                <ProductContext.Provider value={productos}>
-                  <Route
-                    path="/"
-                    element={<><Home /></>} />
+                {/* <ProductContext.Provider value={productos}> */}
+                <Route
+                  path="/"
+                  element={<><Home /></>} />
 
-                  <Route path="/productos" element={<><ItemListContainer productos={productos} greeting="Nuestros pruductos" setInputText={setInputText}
-                    setProductos={setProductos} inputText={inputText} /></>} />
+                <Route path="/productos" element={<><ItemListContainer productos={productos} setInputText={setInputText}
+                  setProductos={setProductos} inputText={inputText} 
+                  carrito={carrito}
+                  setCarrito={setCarrito}/></>} />
 
-                  <Route path="/category/:categoryid" element={<><ItemListContainer productos={productos} greeting="" setInputText={setInputText} setProductos={setProductos} inputText={inputText} /></>} />
+                <Route path="/category/:categoryid" element={<><ItemListContainer productos={productos} greeting="" setInputText={setInputText} setProductos={setProductos} inputText={inputText} /></>} />
 
-                  <Route path="/contacto" element={<p>Página contacto en construcción 👷‍♂️</p>} />
+                <Route path="/contacto" element={<p>Página contacto en construcción 👷‍♂️</p>} />
 
-                  <Route path="/item/:name" element={<ItemDetailContainer productos={productos} />} />
-                </ProductContext.Provider>
+                <Route path="/item/:id" element={<ItemDetailContainer productos={productos} 
+                carrito={carrito}
+                setCarrito={setCarrito}/>} />
+                {/* </ProductContext.Provider> */}
 
-                {/* <Route path="/cart" element={<ItemCartContainer productos={carrito} greeting="Carrito" />} /> */}
-                <Route path="/cart" element={<ItemCartContainer productos={productos} greeting="Carrito" w='100%' />} />
+                <Route path="/cart" element={<ItemCartContainer carrito={carrito} greeting="Carrito" w='100%' />} />
 
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
@@ -103,5 +153,3 @@ function App() {
 }
 
 export default App
-export const ProductContext = createContext();
-export const CartContext = createContext();

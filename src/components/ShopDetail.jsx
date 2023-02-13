@@ -1,20 +1,20 @@
 import { Table, TableCaption, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
 import React, { useContext, useEffect, useState } from 'react'
+import CartContext from '../App'
 
-const ShopDetail = ({}) => {
+const ShopDetail = ({carrito}) => {
   const [totalProductos, setTotalProductos] = useState(0)
   const [totalCarrito, setTotalCarrito] = useState(0)
-const carrito = useContext(CartContext);
+// const carrito = useContext(CartContext);
 
 
   useEffect(() => {
-    setTotalProductos(0)
-    setTotalCarrito(0)
-    carrito.map((item) =>{
-      setTotalProductos(totalProductos+1)
-      setTotalCarrito(totalCarrito+(item.cantidad * item.precio))
-})
-  }, [])
+    setTotalProductos(carrito.length)
+    let acc=0;
+    carrito?carrito.map((item) =>{
+      setTotalCarrito(acc+=(item.cantidad * item.precio))
+}):null
+  }, [carrito])
 
   return (
     <>
@@ -29,7 +29,7 @@ const carrito = useContext(CartContext);
         <Tbody>
           <Tr>
               <Td isNumeric>{totalProductos}</Td>
-              <Td isNumeric>{totalCarrito}</Td>
+              <Td isNumeric>{`$ ${totalCarrito}`}</Td>
             </Tr>
         </Tbody>
         {/* <Tfoot>
