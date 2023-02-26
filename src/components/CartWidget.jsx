@@ -4,16 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import './styles/CartWidget.css';
 import { Link, NavLink } from 'react-router-dom';
-import CartContext from '../App'
+import { CartContext } from '../Context/CartContext.jsx'
 
-const CartWidget = ({carrito}) => {
-// const carrito = useContext(CartContext);
-const [itemsTotal, setItemsTotal] = useState(0)
+const CartWidget = () => {
+const { carrito, cantidadProductos } = useContext(CartContext);
+const itemsInCart = cantidadProductos();
 
 useEffect(() => {
-  let acc=0;
-  carrito?carrito.map((item) =>{
-    setItemsTotal(acc += parseInt(item.cantidad))}):null
 }, [carrito])
 
 
@@ -21,7 +18,7 @@ useEffect(() => {
     <div className="cart-widget">
       <NavLink to="/cart" className={({ isActive }) => isActive ? "activeLink" : undefined}>
         <FontAwesomeIcon icon={faCartShopping} size="2x" />
-        <div className={"qty-display"}>{itemsTotal}</div>
+        <div className={"qty-display"}>{itemsInCart}</div>
       </NavLink>
     </div>
   );

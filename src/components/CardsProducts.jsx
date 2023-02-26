@@ -5,60 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { MdOutlineAddShoppingCart, MdOutlineRemoveShoppingCart } from 'react-icons/md';
+import { CartContext } from '../Context/CartContext';
 
-import CartContext from '../App'
 
 
-const CardsProducts = ({ producto, carrito, setCarrito }) => {
-  // const [carrito, setCarrito] = useState(useContext(CartContext));
-  const toast = useToast()
+const CardsProducts = ({ producto }) => {
+  const { agregarProducto } = useContext(CartContext);
   const [value, setValue] = useState(1)
-
-  // Agrega productos al carrito, si ya se encuentra modifica la cantidad del mismo
-  const agregarProducto = () => {
-    let index = carrito.findIndex(valor => valor.id === producto.id);
-    producto.cantidad = value
-    if (index < 0) {
-      setCarrito([...carrito, producto])
-      toast({
-        title: 'Loading',
-        description: `🟢 Se agregó ${producto.nombre} al carrito`,
-        status: 'success',
-        duration: 2000,
-        isClosable: true,
-      })
-    } else {
-      let aux = carrito;
-      aux[index].cantidad = producto.cantidad
-      setCarrito(aux)
-      toast({
-        title: 'Loading',
-        description: `🟡 Se actualizó ${producto.nombre} del carrito`,
-        status: 'warning',
-        duration: 2000,
-        isClosable: true,
-      })
-    }
-  }
-
-
-  //   const createItem = async () =>{
-  //     const item ={
-  //         nombre: producto.nombre,
-  //         imagen: producto.imagen,
-  //         categoria: producto.categoria,
-  //         precio: producto.precio,
-  //         stock: producto.stock,
-  //         frac: producto.frac
-  //     };
-  //     const itemCollectionRef = collection (db, "carrito");
-  //     await addDoc(itemCollectionRef, item)
-  //     const data = await getDocs(itemCollectionRef);
-  //     // carrito.find((item) => item.id == id)
-  //     // setCarrito(data.docs.map((doc) =>(({...doc.data(), id: doc.id}))));
-  // }
-
-
 
   return (
     <Card maxW='sm' mt={'5'}>
@@ -91,7 +44,7 @@ const CardsProducts = ({ producto, carrito, setCarrito }) => {
             </NumberInputStepper>
           </NumberInput>
           <Button variant='ghost' colorScheme='blue' >
-            <MdOutlineAddShoppingCart size={30} onClick={agregarProducto} />
+            <MdOutlineAddShoppingCart size={30} onClick={()=>{agregarProducto(producto, parseInt(value,10))}} />
           </Button>
           {/* <Button variant='ghost' colorScheme='blue' >
             <MdOutlineRemoveShoppingCart size={30} />
@@ -103,7 +56,3 @@ const CardsProducts = ({ producto, carrito, setCarrito }) => {
 }
 
 export default CardsProducts
-
-// ()=>{
-//   producto.cantidad = value
-//   setCarrito([...carrito, producto])}

@@ -1,13 +1,21 @@
 import { Box, Button, Heading, Image, SimpleGrid, StackDivider, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, VStack } from '@chakra-ui/react'
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { MdOutlineRemoveShoppingCart } from 'react-icons/md'
+import { CartContext } from '../Context/CartContext'
 import ShopDetail from './ShopDetail'
 
 
-const ItemCartContainer = ({ carrito, greeting }) => {
+
+const ItemCartContainer = ({ greeting }) => {
+    const { carrito, quitarProducto } = useContext(CartContext);
+    
+    // useEffect(() => {
+        // }, [carrito])
+        
+
     return (
         <>
-            {carrito.length > 0 ? <><TableContainer>
+            {carrito.length ? <><TableContainer>
                 <Table variant='striped' colorScheme='gray'>
                     <TableCaption></TableCaption>
                     <Thead>
@@ -32,7 +40,7 @@ const ItemCartContainer = ({ carrito, greeting }) => {
                                 <Td isNumeric>{`$ ${producto.cantidad * producto.precio}`}</Td>
                                 <Td >
                                     <Button variant='ghost' colorScheme='blue' >
-                                        <MdOutlineRemoveShoppingCart size={30} />
+                                        <MdOutlineRemoveShoppingCart size={30} onClick={()=>{quitarProducto(producto)}}/>
                                     </Button></Td>
                             </Tr>
                         })
@@ -48,7 +56,7 @@ const ItemCartContainer = ({ carrito, greeting }) => {
                     </Tfoot> */}
                 </Table>
             </TableContainer>
-                <ShopDetail carrito={carrito} />
+                <ShopDetail/>
                 <Button variant='solid' colorScheme='teal' >
                     Finalizar compra
                 </Button>

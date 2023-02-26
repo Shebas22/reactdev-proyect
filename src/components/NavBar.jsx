@@ -7,7 +7,7 @@ import './styles/NavBar.css';
 import { Link, NavLink } from 'react-router-dom';
 import CartContext from '../App'
 
-const NavBar = ({background, carrito }) => {
+const NavBar = ({background}) => {
 // const carrito = useContext(CartContext);
 
   //Ruta de la imagen
@@ -53,7 +53,7 @@ const NavBar = ({background, carrito }) => {
         </div>
 
         {/* cart widget */}
-        <CartWidget carrito={carrito}/>
+        <CartWidget/>
       </div>
     </header>
   );

@@ -2,8 +2,9 @@ import { Button, ButtonGroup, Card, CardBody, CardFooter, Container, Divider, He
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { MdOutlineAddShoppingCart, MdOutlineArrowBack, MdOutlineRemoveShoppingCart } from 'react-icons/md';
 import CardsProducts from "./CardsProducts";
+import { CartContext } from "../Context/CartContext";
 
-const ItemDetailContainer = function ({ productos, carrito, setCarrito }) {
+const ItemDetailContainer = function ({ productos}) {
     let navegate = useNavigate();
     const { id } = useParams();
     const item = productos.find((item) => item.id == id);
@@ -15,9 +16,7 @@ const ItemDetailContainer = function ({ productos, carrito, setCarrito }) {
                     <MdOutlineArrowBack size={30} />
                     {"Volver"}
                 </Button>
-                <CardsProducts producto={item} 
-                carrito={carrito}
-                setCarrito={setCarrito}/>
+                <CardsProducts producto={item} />
             </Container>
         </>
     );

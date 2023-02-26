@@ -6,7 +6,7 @@ import { Await, Link, useParams } from 'react-router-dom';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import Filter from './Filter';
 
-function ItemListContainer({ productos, greeting, setCarrito, carrito, setInputText, setProductos, inputText }) {
+function ItemListContainer({ productos, greeting, setInputText, setProductos, inputText }) {
   const { categoryid } = useParams();
   const categorias = ['todas', 'fruta', 'verdura'];
   const [selectedCategory, setselectedCategory] = useState([]);
@@ -67,18 +67,14 @@ function ItemListContainer({ productos, greeting, setCarrito, carrito, setInputT
               return (<CardsProducts
                 producto={producto}
                 key={producto.id}
-                carrito={carrito}
-                setCarrito={setCarrito}
-              />)
+                />)
             })
             :
             productos.length > 0 ? productos.map((producto) => {
               return (<CardsProducts
                 producto={producto}
                 key={producto.id}
-                carrito={carrito}
-                setCarrito={setCarrito}
-              />)
+                />)
             }) :
               <p>No se encontraron productos</p>
           }
