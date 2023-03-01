@@ -1,9 +1,7 @@
 import React from 'react'
-import { SimpleGrid, Box, Heading, Input, FormControl, FormLabel, FormHelperText, } from "@chakra-ui/react";
-import { Form } from 'react-router-dom';
+import { Input, FormControl} from "@chakra-ui/react";
 
-const Filter = ({ handleChange,
-  setInputText, inputText }) => {
+const Filter = ({ setInputText }) => {
   return (<>
     <FormControl w='auto'>
       <Input placeholder='Filtrar productos' onChange={(e) => setInputText(e.target.value)} />

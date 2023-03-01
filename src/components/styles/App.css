@@ -4,3 +4,7 @@
     text-align: center;
     /* background-color: #d5e9c0; */
 }
+
+main{
+    min-height: 680px;
+}

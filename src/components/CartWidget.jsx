@@ -1,9 +1,9 @@
 // Generar CartWidget
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import './styles/CartWidget.css';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { CartContext } from '../Context/CartContext.jsx'
 
 const CartWidget = () => {

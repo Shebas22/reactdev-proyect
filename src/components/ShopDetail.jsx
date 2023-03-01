@@ -1,16 +1,12 @@
 import { Table, TableCaption, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { CartContext } from '../Context/CartContext';
 
 
 const ShopDetail = ({ }) => {
-  const { carrito, cantidadProductos, totalCarrito } = useContext(CartContext);
+  const { cantidadProductos, totalCarrito } = useContext(CartContext);
   const tProductos = cantidadProductos();
   const tCarrito = totalCarrito();
-
-
-  // useEffect(() => {
-  // }, [carrito])
 
   return (
     <>

@@ -1,69 +1,41 @@
-import { Box, Button, Heading, Image, SimpleGrid, StackDivider, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, VStack } from '@chakra-ui/react'
+import { Button, Text } from '@chakra-ui/react';
 import React, { useContext, useEffect, useState } from 'react'
-import { MdOutlineRemoveShoppingCart } from 'react-icons/md'
+import { MdOutlineArrowBack } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../Context/CartContext'
-import ShopDetail from './ShopDetail'
-
-
+import { ItemCartList } from './ItemCartList'
+import Spinner from './Spinner';
 
 const ItemCartContainer = ({ greeting }) => {
-    const { carrito, quitarProducto } = useContext(CartContext);
-    
-    // useEffect(() => {
-        // }, [carrito])
-        
+    let navegate = useNavigate();
+    const { carrito, vaciarCarrito } = useContext(CartContext);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 500)
+    }, [])
+
 
     return (
         <>
-            {carrito.length ? <><TableContainer>
-                <Table variant='striped' colorScheme='gray'>
-                    <TableCaption></TableCaption>
-                    <Thead>
-                        <Tr>
-                            <Th>Imagen</Th>
-                            <Th>Nombre</Th>
-                            <Th isNumeric>Cantidad</Th>
-                            <Th isNumeric>Precio</Th>
-                            <Th ></Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        {carrito.map((producto) => {
-                            return <Tr key={`table${producto.id}`}>
-                                <Td><Image
-                                    boxSize='35px'
-                                    src={producto.imagen}
-                                    alt={producto.nombre}
-                                /></Td>
-                                <Td>{producto.nombre}</Td>
-                                <Td isNumeric>{producto.cantidad}</Td>
-                                <Td isNumeric>{`$ ${producto.cantidad * producto.precio}`}</Td>
-                                <Td >
-                                    <Button variant='ghost' colorScheme='blue' >
-                                        <MdOutlineRemoveShoppingCart size={30} onClick={()=>{quitarProducto(producto)}}/>
-                                    </Button></Td>
-                            </Tr>
-                        })
-                        }
-                    </Tbody>
-                    {/* <Tfoot>
-                        <Tr>
-                        <Th>Imagen</Th>
-                            <Th>Nombre</Th>
-                            <Th isNumeric>Cantidad</Th>
-                            <Th isNumeric>Precio</Th>
-                        </Tr>
-                    </Tfoot> */}
-                </Table>
-            </TableContainer>
-                <ShopDetail/>
-                <Button variant='solid' colorScheme='teal' >
-                    Finalizar compra
-                </Button>
-
-            </> :
-                <p>Carrito se encuentra vacio</p>
-
+            {loading
+                ? <Spinner />
+                : carrito.length
+                    ? <>
+                        <ItemCartList />
+                        <Button variant='solid' colorScheme='teal' m={10} onClick={() => { vaciarCarrito() }}>
+                            Vaciar carrito
+                        </Button>
+                    </>
+                    : <>
+                        <Text m='50'>Carrito se encuentra vacio 🥱</Text>
+                        <Button variant='ghost' colorScheme='blue' onClick={() => navegate('/productos')}>
+                            <MdOutlineArrowBack size={30} />
+                            {"Ir a la tienda"}
+                        </Button>
+                    </>
             }
         </>
     )

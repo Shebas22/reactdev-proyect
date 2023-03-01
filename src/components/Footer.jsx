@@ -3,7 +3,7 @@ import React from 'react'
 import './styles/Footer.css';
 
 const Footer = ({ background }) => {
-    const logo = '../src/assets/img/logo.png';
+
     return (
         <footer className={`footer background--${background}`}>
             <div className="logo-container">

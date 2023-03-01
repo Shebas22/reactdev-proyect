@@ -1,16 +1,13 @@
-// Cards de productos
 import React, { useContext, useState } from 'react'
-import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Stack, Text, useToast } from '@chakra-ui/react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Stack, Text} from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 import { MdOutlineAddShoppingCart, MdOutlineRemoveShoppingCart } from 'react-icons/md';
 import { CartContext } from '../Context/CartContext';
 
 
 
-const CardsProducts = ({ producto }) => {
-  const { agregarProducto } = useContext(CartContext);
+const Item = ({ producto }) => {
+  const { agregarProducto, quitarProducto } = useContext(CartContext);
   const [value, setValue] = useState(1)
 
   return (
@@ -46,13 +43,13 @@ const CardsProducts = ({ producto }) => {
           <Button variant='ghost' colorScheme='blue' >
             <MdOutlineAddShoppingCart size={30} onClick={()=>{agregarProducto(producto, parseInt(value,10))}} />
           </Button>
-          {/* <Button variant='ghost' colorScheme='blue' >
-            <MdOutlineRemoveShoppingCart size={30} />
-          </Button> */}
+          <Button variant='ghost' colorScheme='red' >
+            <MdOutlineRemoveShoppingCart size={30} onClick={()=>{quitarProducto(producto)}}/>
+          </Button>
         </ButtonGroup>
       </CardFooter>
     </Card>
   )
 }
 
-export default CardsProducts
+export default Item

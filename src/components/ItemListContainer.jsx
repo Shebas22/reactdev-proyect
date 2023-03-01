@@ -1,23 +1,43 @@
 // Lista de productos
-import { useState, useEffect } from 'react'
-import { SimpleGrid, Box, Heading, Input, ButtonGroup, Button, Grid, Select, Menu, MenuButton, MenuList, MenuItem, Container, Text, Flex, Center, Spacer, } from "@chakra-ui/react";
-import CardsProducts from "./CardsProducts";
-import { Await, Link, useParams } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react'
+import { SimpleGrid, Heading, Button, Menu, MenuButton, MenuList, MenuItem, Container, Text, Flex, Center, Spacer, } from "@chakra-ui/react";
+import { Link, useParams } from 'react-router-dom';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import Filter from './Filter';
+import { CatalogueContext } from '../Context/CatalogueContext';
+import ItemList from './ItemList';
+import Spinner from './Spinner';
 
-function ItemListContainer({ productos, greeting, setInputText, setProductos, inputText }) {
+function ItemListContainer({ greeting }) {
+  const { catalogo } = useContext(CatalogueContext)
   const { categoryid } = useParams();
   const categorias = ['todas', 'fruta', 'verdura'];
   const [selectedCategory, setselectedCategory] = useState([]);
   const [categoryProducts, setcategoryProducts] = useState([]);
+  const [inputText, setInputText] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setInputText("")
-    setcategoryProducts(
-      productos.filter((producto) => producto.categoria == categoryid)
+    setLoading(true)
+    setcategoryProducts(categoryid
+      ? filtrar(catalogo.filter((producto) => producto.categoria == categoryid)
+        , inputText.toLowerCase())
+      : filtrar(catalogo, inputText.toLowerCase())
     )
-  }, [selectedCategory])
+    setLoading(false)
+  }, [catalogo, selectedCategory, inputText])
+
+  // Filtrar productos
+  const filtrar = (array, valor) => {
+    let resultado = [];
+    array.filter(producto => {
+      if (JSON.stringify(producto.nombre).includes(valor)) {
+        resultado.push(producto);
+      }
+    });
+    return resultado;
+  };
+
 
   return (
     <>
@@ -26,10 +46,7 @@ function ItemListContainer({ productos, greeting, setInputText, setProductos, in
         <Spacer padding={5} />
         <Flex >
           <Center w='100%' >
-
-            <Filter setInputText={setInputText}
-              InputText={inputText}>
-            </Filter>
+            <Filter setInputText={setInputText} />
             <Spacer w='10' />
             <Menu>
               <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
@@ -48,9 +65,7 @@ function ItemListContainer({ productos, greeting, setInputText, setProductos, in
             </Menu>
           </Center>
         </Flex>
-
         <SimpleGrid minChildWidth="250px" spacing="20px" m="6">
-
           <Heading as="h1"
             color="blue.400"
             fontSize="2xl"
@@ -60,25 +75,19 @@ function ItemListContainer({ productos, greeting, setInputText, setProductos, in
             textAlign="center"
           >
           </Heading>
-
-          {categoryProducts.length > 0
-            ?
-            categoryProducts.map((producto) => {
-              return (<CardsProducts
-                producto={producto}
-                key={producto.id}
-                />)
-            })
-            :
-            productos.length > 0 ? productos.map((producto) => {
-              return (<CardsProducts
-                producto={producto}
-                key={producto.id}
-                />)
-            }) :
-              <p>No se encontraron productos</p>
+          {loading
+            ? <>
+              <Container centerContent padding={10} >
+                <Spinner />
+              </Container>
+            </>
+            : categoryProducts.length > 0
+              ? <ItemList productos={categoryProducts} />
+              : (inputText == "" && catalogo.length > 0)
+                ? <ItemList productos={catalogo} />
+                : <Text>No se encontraron productos</Text>
+            // <p>No se encontraron productos</p>
           }
-
         </SimpleGrid>
       </Container>
     </>

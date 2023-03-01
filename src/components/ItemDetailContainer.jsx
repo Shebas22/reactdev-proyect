@@ -1,13 +1,16 @@
-import { Button, ButtonGroup, Card, CardBody, CardFooter, Container, Divider, Heading, Image, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Stack, Text } from "@chakra-ui/react";
-import { useNavigate, useParams, Link } from "react-router-dom";
-import { MdOutlineAddShoppingCart, MdOutlineArrowBack, MdOutlineRemoveShoppingCart } from 'react-icons/md';
-import CardsProducts from "./CardsProducts";
-import { CartContext } from "../Context/CartContext";
+import { Button, Container } from "@chakra-ui/react";
+import { useNavigate, useParams } from "react-router-dom";
+import { MdOutlineArrowBack} from 'react-icons/md';
+import { useContext } from "react";
+import { CatalogueContext } from "../Context/CatalogueContext";
+import Item from "./Item";
 
-const ItemDetailContainer = function ({ productos}) {
+
+const ItemDetailContainer = function () {
+    const {catalogo} = useContext(CatalogueContext)
     let navegate = useNavigate();
     const { id } = useParams();
-    const item = productos.find((item) => item.id == id);
+    const item = catalogo.find((item) => item.id == id);
 
     return (
         <>
@@ -16,7 +19,7 @@ const ItemDetailContainer = function ({ productos}) {
                     <MdOutlineArrowBack size={30} />
                     {"Volver"}
                 </Button>
-                <CardsProducts producto={item} />
+                <Item producto={item} />
             </Container>
         </>
     );
