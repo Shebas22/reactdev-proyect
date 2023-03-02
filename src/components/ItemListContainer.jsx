@@ -86,7 +86,6 @@ function ItemListContainer({ greeting }) {
               : (inputText == "" && catalogo.length > 0)
                 ? <ItemList productos={catalogo} />
                 : <Text>No se encontraron productos</Text>
-            // <p>No se encontraron productos</p>
           }
         </SimpleGrid>
       </Container>

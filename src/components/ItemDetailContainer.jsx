@@ -1,13 +1,13 @@
 import { Button, Container } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
-import { MdOutlineArrowBack} from 'react-icons/md';
+import { MdOutlineArrowBack } from 'react-icons/md';
 import { useContext } from "react";
 import { CatalogueContext } from "../Context/CatalogueContext";
 import Item from "./Item";
 
 
 const ItemDetailContainer = function () {
-    const {catalogo} = useContext(CatalogueContext)
+    const { catalogo } = useContext(CatalogueContext)
     let navegate = useNavigate();
     const { id } = useParams();
     const item = catalogo.find((item) => item.id == id);

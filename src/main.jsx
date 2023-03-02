@@ -6,6 +6,7 @@ import { CartProvider } from "./Context/CartContext";
 import { BrowserRouter } from 'react-router-dom'
 import { CatalogueProvider } from './Context/CatalogueContext';
 import { LoaderProvider } from './Context/LoaderContext';
+import { OrdersProvider } from './Context/OrdersContext';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -14,9 +15,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <LoaderProvider>
         <CatalogueProvider>
           <CartProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
+            <OrdersProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </OrdersProvider>
           </CartProvider>
         </CatalogueProvider>
       </LoaderProvider>

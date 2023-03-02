@@ -6,7 +6,7 @@ import { LoaderContext } from "./LoaderContext";
 export const CatalogueContext = createContext();
 
 export const CatalogueProvider = ({ children }) => {
-    const { loading , setLoading } = useContext(LoaderContext);
+    const { loading, setLoading } = useContext(LoaderContext);
     const productsCollectionRef = collection(db, "products")
     const [catalogo, setCatalogo] = useState([]);
 
@@ -15,7 +15,6 @@ export const CatalogueProvider = ({ children }) => {
     }, [])
 
     const getProductos = async () => {
-        console.log(loading);
         const querySnapshot = await getDocs(productsCollectionRef);
         const docs = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
         docs.sort(function (a, b) {
@@ -29,7 +28,6 @@ export const CatalogueProvider = ({ children }) => {
         });
         setCatalogo(docs)
         setLoading(false)
-        console.log(loading);
     };
 
     return (

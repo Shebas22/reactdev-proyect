@@ -5,15 +5,12 @@ import ItemListContainer from './components/ItemListContainer';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { useContext } from 'react'
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemCartContainer from './components/ItemCartContainer';
-import Spinner from './components/Spinner';
+import ItemOrdersContainer from './components/ItemOrdersContainer';
 import Home from './components/Home';
-import { CatalogueContext } from './Context/CatalogueContext';
 
 function App() {
-  const { catalogo } = useContext(CatalogueContext);
 
   return (
     <><div className='body'>
@@ -33,6 +30,7 @@ function App() {
               <Route path="/contacto" element={<Text m='50'>Página en construcción 👷‍♂️</Text>} />
               <Route path="/item/:id" element={<ItemDetailContainer greeting="Detalle de producto" />} />
               <Route path="/cart" element={<ItemCartContainer greeting="Carrito" w='100%' />} />
+              <Route path="/orders" element={<ItemOrdersContainer greeting="Ordenes" w='100%' />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </ul>

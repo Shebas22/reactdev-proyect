@@ -11,18 +11,17 @@ export const CartProvider = ({ children }) => {
     const [carrito, setCarrito] = useState([]);
     const toast = useToast()
     const localCart = recuperarCarrito()
-    
+
     useEffect(() => {
-            setCarrito(localCart)
-        }, []);
-        
-        
-        const guardarCarrito = () => {
-            localStorage.setItem("GauchitoCarrito", JSON.stringify(carrito));
-        }
-        
+        setCarrito(localCart)
+    }, []);
+
+
+    const guardarCarrito = () => {
+        localStorage.setItem("GauchitoCarrito", JSON.stringify(carrito));
+    }
+
     useEffect(() => {
-        console.log(carrito);
         guardarCarrito();
     }, [carrito]);
 
@@ -38,6 +37,7 @@ export const CartProvider = ({ children }) => {
                 status: 'warning',
                 duration: 2000,
                 isClosable: true,
+                position: 'bottom-right'
             })
         } else {
             item.cantidad = cantidad;
@@ -48,6 +48,7 @@ export const CartProvider = ({ children }) => {
                 status: 'success',
                 duration: 2000,
                 isClosable: true,
+                position: 'bottom-right'
             })
         }
     };
@@ -73,6 +74,7 @@ export const CartProvider = ({ children }) => {
             status: 'error',
             duration: 2000,
             isClosable: true,
+            position: 'bottom-right'
         })
     };
 
@@ -84,6 +86,7 @@ export const CartProvider = ({ children }) => {
             status: 'info',
             duration: 2000,
             isClosable: true,
+            position: 'bottom-right'
         })
     };
 

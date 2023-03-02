@@ -24,14 +24,6 @@ const ShopDetail = ({ }) => {
             <Td isNumeric>{`$ ${tCarrito}`}</Td>
           </Tr>
         </Tbody>
-        {/* <Tfoot>
-                        <Tr>
-                        <Th>Imagen</Th>
-                            <Th>Nombre</Th>
-                            <Th isNumeric>Cantidad</Th>
-                            <Th isNumeric>Precio</Th>
-                        </Tr>
-                    </Tfoot> */}
       </Table>
     </>
   )

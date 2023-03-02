@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { MdOutlineRemoveShoppingCart } from 'react-icons/md'
 import { CartContext } from '../Context/CartContext';
 
-export const ItemCart = ({ producto }) => {
+export const ItemCart = ({ producto, botton }) => {
     const { quitarProducto } = useContext(CartContext);
 
     return (
@@ -17,9 +17,12 @@ export const ItemCart = ({ producto }) => {
             <Td isNumeric>{producto.cantidad}</Td>
             <Td isNumeric>{`$ ${producto.cantidad * producto.precio}`}</Td>
             <Td >
-                <Button variant='ghost' colorScheme='red' >
-                    <MdOutlineRemoveShoppingCart size={30} onClick={() => { quitarProducto(producto) }} />
-                </Button></Td>
+                {botton ?
+                    <Button variant='ghost' colorScheme='red' >
+                        <MdOutlineRemoveShoppingCart size={30} onClick={() => { quitarProducto(producto) }} />
+                    </Button> : null
+                }
+            </Td>
         </Tr>
     )
 }

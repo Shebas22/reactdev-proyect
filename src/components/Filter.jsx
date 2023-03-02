@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, FormControl} from "@chakra-ui/react";
+import { Input, FormControl } from "@chakra-ui/react";
 
 const Filter = ({ setInputText }) => {
   return (<>
